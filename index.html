@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alight Motion Premium - LummXD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0F0F0F;
+    --mint: #A7F3D0;
+    --mint-soft: #D1FAE5;
+    --mint-strong: #10B981;
+    --indigo: #4F46E5;
+    --indigo-dark: #3730A3;
+    --indigo-soft: #E0E7FF;
+    --yellow: #FDE68A;
+    --red-soft: #FCA5A5;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #FAFAFA;
+    min-height: 100vh;
+    padding: 16px 14px 110px;
+    color: var(--black);
+    line-height: 1.4;
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrap { width: 100%; max-width: 460px; }
+
+  /* ============ REVEAL ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--indigo);
+    border: 3px solid var(--black);
+    border-radius: 18px;
+    box-shadow: 4px 4px 0 var(--black);
+    margin-bottom: 20px;
+  }
+  .topbar-logo {
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    background: #fff;
+    color: var(--indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .topbar-name {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.7px;
+    flex: 1;
+    color: #fff;
+  }
+  .topbar-menu {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: #fff;
+    border: 2.5px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+    flex-shrink: 0;
+  }
+  .topbar-menu:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+  .topbar-menu svg {
+    width: 20px; height: 20px;
+    stroke: var(--black);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  /* ============ PAGE ============ */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ============ BADGE ============ */
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .badge-pill .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--red-soft);
+    border: 1.5px solid var(--black);
+  }
+
+  /* ============ HEADLINE ============ */
+  .headline {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin-bottom: 14px;
+  }
+  .headline .emoji-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px; height: 46px;
+    background: var(--indigo);
+    border: 2.5px solid var(--black);
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 4px;
+    box-shadow: 3px 3px 0 var(--black);
+    transform: rotate(-4deg);
+    position: relative;
+    top: -4px;
+    color: #fff;
+  }
+  .desc {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #333;
+    margin-bottom: 22px;
+  }
+
+  /* ============ MAIN CARD (MINT) ============ */
+  .green-card {
+    background: var(--mint);
+    border: 3px solid var(--black);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 22px;
+    box-shadow: 6px 6px 0 var(--black);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .head-icon {
+    width: 52px; height: 52px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .head-icon svg {
+    width: 24px; height: 24px;
+    stroke: var(--black);
+    stroke-width: 2.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .head-text h3 {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .head-text ul {
+    list-style: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .head-text li {
+    padding-left: 14px;
+    position: relative;
+  }
+  .head-text li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 6px;
+    background: var(--black);
+    border-radius: 50%;
+  }
+
+  /* ============ VARIANT ============ */
+  .variant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .variant {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+    box-shadow: 3px 3px 0 var(--black);
+    position: relative;
+  }
+  .variant:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .variant.selected {
+    background: var(--indigo);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .variant.selected .v-name { color: #fff; }
+  .variant.selected .v-desc { color: #E0E7FF; }
+  .variant.selected .v-desc b { color: #fff; }
+  .variant input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border: 2.5px solid var(--black);
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .variant input:checked { background: var(--black); }
+  .variant input:checked::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: var(--indigo);
+    border-radius: 50%;
+  }
+  .variant.selected input:checked::after { background: var(--indigo-soft); }
+  .v-info { flex: 1; min-width: 0; }
+  .v-name {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    margin-bottom: 2px;
+  }
+  .v-desc {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.35;
+  }
+  .v-desc b { color: var(--black); font-weight: 900; }
+  .v-price {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+    background: var(--black);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 2px solid var(--black);
+  }
+  .variant.selected .v-price {
+    background: #fff;
+    color: var(--indigo);
+  }
+  .v-pill {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    font-size: 9.5px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--yellow);
+    border: 2px solid var(--black);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ============ TOTAL BAR ============ */
+  .total-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .total-bar .lbl {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .total-bar .val {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: var(--indigo);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 2px solid var(--black);
+  }
+
+  /* ============ AGREE ============ */
+  .agree {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    background: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .agree input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    border: 2.5px solid var(--black);
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .agree input:checked { background: var(--black); }
+  .agree input:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px; top: 1px;
+    width: 5px; height: 11px;
+    border: solid var(--indigo);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .agree span {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .agree a {
+    color: var(--indigo);
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    cursor: pointer;
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--indigo);
+    color: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn-primary:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--black);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+  .btn-primary:disabled {
+    background: #E5E5E5;
+    color: #999;
+    box-shadow: 4px 4px 0 #999;
+    border-color: #999;
+    cursor: not-allowed;
+  }
+  .btn-primary svg {
+    width: 18px; height: 18px;
+    stroke: currentColor;
+    stroke-width: 3;
+    fill: none;
+  }
+
+  /* ============ NOTICE ============ */
+  .notice {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--indigo);
+    color: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .notice .icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1.3;
+    font-weight: 900;
+  }
+  .notice b { font-weight: 900; }
+
+  /* ============ STEPS ============ */
+  .steps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .step-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 800;
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .step-pill.active { background: var(--indigo-soft); }
+  .step-num {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--black);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+  }
+  .step-sep {
+    width: 18px;
+    height: 2.5px;
+    background: var(--black);
+  }
+
+  /* ============ LABEL ============ */
+  .label-sm {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--black);
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  /* ============ PAY ============ */
+  .pay-section {
+    padding: 22px 18px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+    box-shadow: 6px 6px 0 var(--black);
+  }
+  .pay-label {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--indigo);
+    color: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .qris-img-box {
+    display: inline-block;
+    background: #fff;
+    padding: 10px;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .qris-img-box img {
+    display: block;
+    width: 210px;
+    height: 210px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  .qris-owner {
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .qris-owner b { font-weight: 900; }
+  .qris-hint {
+    font-size: 11px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  .pay-amount-box {
+    padding: 14px;
+    background: var(--indigo-soft);
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .pay-amount-box .lbl {
+    font-size: 10.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 4px;
+  }
+  .pay-amount {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    color: var(--indigo);
+  }
+  .pay-variant-tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 10px;
+    background: #fff;
+    border: 2px solid var(--black);
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ WA BTN ============ */
+  .btn-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    background: var(--mint-strong);
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    box-shadow: 4px 4px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn-wa:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--black);
+  }
+  .btn-wa:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+  .btn-wa svg { width: 20px; height: 20px; }
+
+  .btn-ghost {
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    color: var(--black);
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn-ghost:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .btn-ghost:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+
+  /* ============ CARA ORDER ============ */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--black);
+    position: relative;
+  }
+  .step-badge {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--indigo);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    flex-shrink: 0;
+    border: 2.5px solid var(--black);
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .step-content { flex: 1; min-width: 0; }
+  .step-title {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #444;
+  }
+  .step-desc b {
+    color: var(--indigo);
+    font-weight: 900;
+  }
+
+  /* ============ DEVELOPER PAGE ============ */
+  .dev-hero {
+    background: var(--indigo);
+    color: #fff;
+    border: 3px solid var(--black);
+    border-radius: 20px;
+    padding: 22px 20px;
+    margin-bottom: 22px;
+    box-shadow: 6px 6px 0 var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .dev-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .dev-avatar {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    border: 3px solid var(--black);
+    box-shadow: 3px 3px 0 var(--black);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #fff;
+    position: relative;
+  }
+  .dev-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .dev-info { flex: 1; min-width: 0; }
+  .dev-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 100px;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .dev-name {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .verified-tiktok {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .verified-tiktok svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+  .dev-hero p {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+    opacity: 0.95;
+  }
+
+  .section-heading {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    margin-bottom: 12px;
+  }
+
+  /* ============ SOCIAL 3-COLUMN ============ */
+  .social-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .social-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 8px;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 var(--black);
+    text-decoration: none;
+    color: var(--black);
+    transition: transform 0.12s, box-shadow 0.12s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .social-mini:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .social-mini:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+  .social-mini.tiktok {
+    background: var(--indigo);
+    color: #fff;
+  }
+  .social-mini.tiktok .social-mini-icon {
+    background: var(--black);
+    color: #fff;
+  }
+  .social-mini.contact {
+    background: var(--mint-strong);
+    color: #fff;
+  }
+  .social-mini.contact .social-mini-icon {
+    background: #fff;
+    color: var(--mint-strong);
+  }
+  .social-mini.channel {
+    background: var(--mint);
+    color: var(--black);
+  }
+  .social-mini.channel .social-mini-icon {
+    background: var(--black);
+    color: var(--mint);
+  }
+  .social-mini-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--black);
+  }
+  .social-mini-icon svg {
+    width: 20px; height: 20px;
+    fill: currentColor;
+  }
+  .social-mini.channel .social-mini-icon svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .social-mini-name {
+    font-size: 11.5px;
+    font-weight: 900;
+    letter-spacing: -0.2px;
+  }
+
+  /* Quote */
+  .quote-card {
+    background: var(--black);
+    border: 3px solid var(--black);
+    border-radius: 20px;
+    padding: 22px 20px;
+    margin-bottom: 22px;
+    box-shadow: 6px 6px 0 var(--indigo);
+    color: #fff;
+    position: relative;
+  }
+  .quote-card .label {
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--indigo-soft);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .quote-card .quote-mark {
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--indigo);
+    line-height: 0.6;
+    margin-bottom: 8px;
+    font-family: Georgia, serif;
+  }
+  .quote-card .quote-text {
+    font-size: 19px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+  }
+
+  /* ============ FAQ ============ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .faq-item {
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 var(--black);
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    user-select: none;
+    letter-spacing: -0.2px;
+  }
+  .faq-q .q-mark {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--indigo);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+    flex-shrink: 0;
+    border: 2px solid var(--black);
+  }
+  .faq-q .arrow {
+    margin-left: auto;
+    width: 18px; height: 18px;
+    transition: transform 0.2s;
+    stroke: var(--black);
+    stroke-width: 3;
+    fill: none;
+  }
+  .faq-item.open .faq-q .arrow {
+    transform: rotate(180deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+    padding: 0 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #444;
+    border-top: 0 solid var(--black);
+  }
+  .faq-item.open .faq-a {
+    max-height: 220px;
+    padding: 12px 14px;
+    border-top: 2px dashed var(--black);
+  }
+
+  /* ============ BOTTOM NAV ============ */
+  .bottom-nav {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 28px);
+    max-width: 460px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 8px;
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 20px;
+    box-shadow: 4px 4px 0 var(--black);
+    z-index: 50;
+  }
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 9px 4px;
+    border-radius: 12px;
+    border: 2.5px solid transparent;
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    background: transparent;
+    font-family: inherit;
+  }
+  .nav-item:hover { background: #F5F5F5; }
+  .nav-item.active {
+    background: var(--indigo);
+    color: #fff;
+    border-color: var(--black);
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .nav-item.active svg { stroke: #fff; }
+  .nav-item svg {
+    width: 19px; height: 19px;
+    stroke: var(--black);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ============ MODAL ============ */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+  }
+  .modal.show { display: flex; }
+  .modal-card {
+    background: #fff;
+    border: 3px solid var(--black);
+    border-radius: 22px;
+    padding: 24px 22px;
+    max-width: 420px;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    box-shadow: 8px 8px 0 var(--black);
+    animation: popIn 0.25s ease;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-card h3 {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--indigo-soft);
+    border: 2px solid var(--black);
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 16px 0 10px;
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  .modal-card ul { list-style: none; }
+  .modal-card li {
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 7px 0 7px 22px;
+    position: relative;
+  }
+  .modal-card li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--black);
+  }
+  .modal-card li b { font-weight: 900; }
+  .modal-card li .hi {
+    background: var(--indigo-soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 900;
+  }
+  .mbtn {
+    width: 100%;
+    padding: 14px;
+    background: var(--indigo);
+    color: #fff;
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 16px;
+    box-shadow: 3px 3px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .mbtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+
+  /* ============ DRAWER ============ */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.55);
+    display: none;
+    z-index: 200;
+  }
+  .drawer-overlay.show { display: block; }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    border-left: 3px solid var(--black);
+    padding: 20px 18px;
+    z-index: 201;
+    transition: right 0.28s ease;
+    overflow-y: auto;
+  }
+  .drawer.show { right: 0; }
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2.5px dashed var(--black);
+  }
+  .drawer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2.5px solid var(--black);
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 var(--black);
+    background: var(--indigo);
+  }
+  .drawer-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .drawer-head-info { min-width: 0; }
+  .drawer-head-info .nm {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .drawer-head-info .sub {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #666;
+  }
+  .drawer-close {
+    margin-left: auto;
+    width: 32px; height: 32px;
+    border: 2.5px solid var(--black);
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--black);
+    flex-shrink: 0;
+  }
+  .drawer-close svg {
+    width: 16px; height: 16px;
+    stroke: var(--black);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+  }
+  .drawer-section-title {
+    font-size: 10.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #666;
+    margin: 16px 0 8px;
+  }
+  .drawer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border: 2.5px solid var(--black);
+    background: #fff;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--black);
+    box-shadow: 2px 2px 0 var(--black);
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-align: left;
+  }
+  .drawer-item:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .drawer-item:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+  .drawer-item .ico {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--indigo-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--black);
+  }
+  .drawer-item .ico svg {
+    width: 16px; height: 16px;
+    stroke: var(--indigo);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .drawer-item.green .ico { background: var(--mint-soft); }
+  .drawer-item.green .ico svg { stroke: #047857; }
+  .drawer-item.fill .ico svg {
+    fill: var(--indigo);
+    stroke: none;
+  }
+
+  /* ============ FOLLOW MODAL ============ */
+  .follow-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 300;
+  }
+  .follow-modal.show { display: flex; }
+  .follow-card {
+    background: var(--mint);
+    border: 3px solid var(--black);
+    border-radius: 22px;
+    padding: 26px 22px 22px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--black);
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .follow-icon {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    background: #fff;
+    border: 3px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .follow-icon svg {
+    width: 34px; height: 34px;
+    stroke: var(--indigo);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .follow-card h3 {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -0.4px;
+    margin-bottom: 8px;
+  }
+  .follow-card .desc {
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    color: #111;
+  }
+  .follow-benefits {
+    background: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    text-align: left;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .follow-benefits .item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 0;
+  }
+  .follow-benefits .chk {
+    width: 18px; height: 18px;
+    border-radius: 6px;
+    background: var(--indigo);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .btn-follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 15px;
+    background: var(--indigo);
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid var(--black);
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-bottom: 8px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+    transition: transform 0.1s;
+  }
+  .btn-follow:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.35);
+  }
+  .btn-follow .wa-ic { width: 18px; height: 18px; }
+  .btn-skip {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    color: var(--black);
+    border: 2.5px solid var(--black);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--black);
+    transition: transform 0.1s;
+  }
+  .btn-skip:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  /* ============ TOAST ============ */
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    padding: 12px 22px;
+    background: var(--black);
+    color: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 4px 4px 0 var(--indigo);
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 600;
+    opacity: 0;
+  }
+  .toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  .hide { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar reveal">
+    <div class="topbar-logo">&lt;/&gt;</div>
+    <div class="topbar-name">LummXD</div>
+    <div class="topbar-menu" id="menuBtn">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: BERANDA ==================== -->
+  <div class="page active" id="pageBeranda">
+
+    <div class="badge-pill reveal">
+      <span class="dot"></span>
+      Aktivasi manual · Full fitur · 1 Tahun
+    </div>
+
+    <h1 class="headline reveal">
+      Alight Motion
+      <span class="emoji-box">AM</span>
+      Premium
+    </h1>
+
+    <p class="desc reveal">
+      Pilih paket, bayar via QRIS, kirim bukti. Admin langsung proses aktivasi premium full fitur tanpa watermark.
+    </p>
+
+    <div id="step1">
+      <div class="steps reveal">
+        <div class="step-pill active">
+          <span class="step-num">1</span> Detail
+        </div>
+        <div class="step-sep"></div>
+        <div class="step-pill">
+          <span class="step-num">2</span> Bayar
+        </div>
+      </div>
+
+      <div class="green-card reveal">
+        <div class="card-head">
+          <div class="head-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+          </div>
+          <div class="head-text">
+            <h3>Pilih Paketnya</h3>
+            <ul>
+              <li>Bisa email dari admin atau email sendiri</li>
+              <li>Harga beda, benefit beda</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="variant-list">
+          <label class="variant selected" data-variant="share">
+            <input type="radio" name="variant" value="share" checked>
+            <div class="v-info">
+              <div class="v-name">Share Email</div>
+              <div class="v-desc">Pakai <b>email dari admin</b> — tinggal login, langsung premium.</div>
+            </div>
+            <div class="v-price">1.800</div>
+          </label>
+
+          <label class="variant" data-variant="sendiri">
+            <span class="v-pill">Aman</span>
+            <input type="radio" name="variant" value="sendiri">
+            <div class="v-info">
+              <div class="v-name">Email Sendiri</div>
+              <div class="v-desc">Pakai <b>email kamu sendiri</b> — akun aman, bisa multi device.</div>
+            </div>
+            <div class="v-price">2.500</div>
+          </label>
+        </div>
+
+        <div class="total-bar">
+          <span class="lbl">Total Bayar</span>
+          <span class="val" id="totalHarga">Rp 1.800</span>
+        </div>
+
+        <label class="agree" for="agree">
+          <input type="checkbox" id="agree">
+          <span>Setuju dengan <a id="openTc">syarat & ketentuan</a> yang berlaku</span>
+        </label>
+
+        <button class="btn-primary" id="btnOrder" disabled>
+          Lanjut Bayar
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <div class="notice reveal">
+        <span class="icon">⚠</span>
+        <span>Aktivasi <b>manual</b> oleh admin, estimasi <b>1×24 jam</b> setelah pembayaran dikonfirmasi.</span>
+      </div>
+    </div>
+
+    <div id="step2" class="hide">
+      <div class="steps reveal">
+        <div class="step-pill active">
+          <span class="step-num">✓</span> Detail
+        </div>
+        <div class="step-sep"></div>
+        <div class="step-pill active">
+          <span class="step-num">2</span> Bayar
+        </div>
+      </div>
+
+      <div class="pay-section reveal">
+        <div class="pay-label">QRIS</div>
+        <div class="qris-img-box">
+          <img src="gambar.jpg" alt="QRIS">
+        </div>
+        <div class="qris-owner">a.n. <b>Toko Store</b></div>
+        <div class="qris-hint">Scan pakai e-wallet / m-banking apa saja</div>
+
+        <div class="pay-amount-box">
+          <div class="lbl">Total Transfer</div>
+          <div class="pay-amount" id="payAmount">Rp 1.800</div>
+          <div class="pay-variant-tag" id="payVariant">Share Email</div>
+        </div>
+      </div>
+
+      <div class="notice reveal">
+        <span class="icon">ℹ</span>
+        <span>Setelah transfer, klik tombol di bawah untuk <b>kirim bukti bayar</b> ke admin.</span>
+      </div>
+
+      <a href="#" id="btnWa" class="btn-wa reveal" target="_blank">
+        <svg fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+        </svg>
+        Kirim Bukti Bayar
+      </a>
+
+      <button class="btn-ghost reveal" id="btnBack">← Ubah Pesanan</button>
+    </div>
+
+  </div>
+
+  <!-- ==================== PAGE: CARA ORDER ==================== -->
+  <div class="page" id="pageHasil">
+    <h1 class="section-heading">Cara Order</h1>
+    <p class="desc">Ikutin langkah di bawah ini biar pesanan lu langsung diproses.</p>
+
+    <div class="steps-list">
+      <div class="step-card reveal">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <div class="step-title">Pilih Paket</div>
+          <div class="step-desc">Buka tab <b>Beranda</b>, pilih paket <b>Share Email</b> atau <b>Email Sendiri</b>.</div>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <div class="step-title">Scan & Transfer</div>
+          <div class="step-desc">Scan QRIS pakai e-wallet / m-banking, transfer sesuai harga paket.</div>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <div class="step-title">Kirim Bukti Bayar</div>
+          <div class="step-desc">Klik tombol <b>Kirim Bukti Bayar</b> ke admin. Sertakan screenshot bukti transfer.</div>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-badge">4</div>
+        <div class="step-content">
+          <div class="step-title">Tunggu Aktivasi</div>
+          <div class="step-desc">Admin proses manual, estimasi <b>1×24 jam</b>. Akun langsung jadi premium.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice reveal">
+      <span class="icon">ℹ</span>
+      <span>Ada kendala? Chat admin via <b>Developer</b> atau cek <b>Info</b> buat FAQ.</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: INFO (FAQ) ==================== -->
+  <div class="page" id="pageInfo">
+    <h1 class="section-heading">Pusat Bantuan</h1>
+    <p class="desc">Pertanyaan yang sering ditanyakan. Klik buat lihat jawabannya.</p>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Berapa lama proses aktivasi?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Estimasi <b>1×24 jam</b> setelah pembayaran dikonfirmasi. Kalau sedang ramai, bisa lebih lama dikit. Admin bakal update via WhatsApp.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Apa bedanya Share Email vs Email Sendiri?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><b>Share Email</b> pakai email dari admin — murah, tinggal login. <b>Email Sendiri</b> pakai email kamu — lebih aman, bisa multi device, dan akun gak bisa di-recovery sama orang lain.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Bisa refund kalau gagal?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Kalau <b>gagal aktivasi dari sisi kami</b>, uang bakal dikembalikan full. Tapi kalau akun udah berhasil diaktivasi, tidak ada refund.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Kenapa harus kirim bukti bayar?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Biar admin bisa verifikasi pembayaran kamu. Tanpa bukti, pesanan gak bisa diproses. Kirim via WhatsApp ke nomor admin.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Apakah aman? Akun bisa kena banned?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Metode yang kami pakai <b>aman & sudah teruji</b>. Tapi tetap ada risiko kecil dari pihak aplikasi. Kami gak bertanggung jawab kalau akun kena banned karena kelalaian user.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <span class="q-mark">?</span>
+          Ada kendala lain, hubungi siapa?
+          <svg class="arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Langsung chat admin via WhatsApp, atau cek tab <b>Developer</b> buat info kontak lengkap.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: DEVELOPER ==================== -->
+  <div class="page" id="pageDeveloper">
+
+    <div class="dev-hero reveal">
+      <div class="dev-profile">
+        <div class="dev-avatar">
+          <img src="totoro.jpg" alt="LummXD">
+        </div>
+        <div class="dev-info">
+          <div class="dev-tag">Developer</div>
+          <div class="dev-name">
+            LummXD
+            <span class="verified-tiktok" title="Verified">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="11" fill="#20D5EC"/>
+                <path d="M9.5 16.5L5.5 12.5L7 11L9.5 13.5L17 6L18.5 7.5L9.5 16.5Z" fill="#FFFFFF"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <p>Independent developer • Digital creator • Building projects with passion and purpose.</p>
+    </div>
+
+    <h2 class="section-heading">Media sosial</h2>
+
+    <div class="social-grid-3 reveal">
+      <a href="https://tiktok.com/@lumzssstore_reall" target="_blank" class="social-mini tiktok">
+        <div class="social-mini-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+        </div>
+        <div class="social-mini-name">TikTok</div>
+      </a>
+
+      <a href="https://wa.me/6283130971335?text=Halo%20LummXD%2C%20saya%20mau%20tanya%20soal%20Alight%20Motion%20Premium" target="_blank" class="social-mini contact">
+        <div class="social-mini-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="social-mini-name">Hubungi</div>
+      </a>
+
+      <a href="https://whatsapp.com/channel/0029Vb95Lvu8V0tmMQ3vQ41c" target="_blank" class="social-mini channel">
+        <div class="social-mini-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 11l18-5v12L3 14v-3z"/>
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+          </svg>
+        </div>
+        <div class="social-mini-name">Saluran</div>
+      </a>
+    </div>
+
+    <div class="quote-card reveal">
+      <div class="label">Kata-kata dari saya</div>
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Bermimpilah setinggi langit, sebab masa depanmu layak diperjuangkan.</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-item active" data-page="pageBeranda">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Beranda
+  </button>
+  <button class="nav-item" data-page="pageHasil">
+    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    Cara Order
+  </button>
+  <button class="nav-item" data-page="pageInfo">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    Info
+  </button>
+  <button class="nav-item" data-page="pageDeveloper">
+    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    Developer
+  </button>
+</div>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-avatar">
+      <img src="totoro.jpg" alt="LummXD">
+    </div>
+    <div class="drawer-head-info">
+      <div class="nm">
+        LummXD
+        <span class="verified-tiktok" style="width:14px;height:14px;">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;">
+            <circle cx="12" cy="12" r="11" fill="#20D5EC"/>
+            <path d="M9.5 16.5L5.5 12.5L7 11L9.5 13.5L17 6L18.5 7.5L9.5 16.5Z" fill="#FFFFFF"/>
+          </svg>
+        </span>
+      </div>
+      <div class="sub">Digital Store</div>
+    </div>
+    <div class="drawer-close" id="drawerClose">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+  </div>
+
+  <div class="drawer-section-title">Navigasi</div>
+  <div class="drawer-menu">
+    <button class="drawer-item" data-page="pageBeranda">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      Beranda
+    </button>
+    <button class="drawer-item" data-page="pageHasil">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      Cara Order
+    </button>
+    <button class="drawer-item" data-page="pageInfo">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+      Pusat Bantuan
+    </button>
+    <button class="drawer-item" data-page="pageDeveloper">
+      <div class="ico"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      Developer
+    </button>
+  </div>
+
+  <div class="drawer-section-title">Sosial & Kontak</div>
+  <div class="drawer-menu">
+    <a class="drawer-item green" href="https://wa.me/6283130971335?text=Halo%20LummXD%2C%20saya%20mau%20tanya" target="_blank">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+      Hubungi Developer
+    </a>
+    <a class="drawer-item" href="https://tiktok.com/@lumzssstore_reall" target="_blank">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="#4F46E5"/></svg></div>
+      TikTok
+    </a>
+    <a class="drawer-item green" href="https://whatsapp.com/channel/0029Vb95Lvu8V0tmMQ3vQ41c" target="_blank">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+      Channel WA
+    </a>
+  </div>
+</div>
+
+<!-- Modal T&C -->
+<div class="modal" id="tcModal">
+  <div class="modal-card">
+    <h3>Syarat & Ketentuan</h3>
+
+    <div class="section-title">Pilih Paket Dulu</div>
+    <ul>
+      <li><b>Paket Share Email (Rp 1.800)</b> — akun memakai <span class="hi">email dari admin</span>. Kamu tinggal login pakai email yang dikasih admin, langsung premium.</li>
+      <li><b>Paket Email Sendiri (Rp 2.500)</b> — aktivasi pakai <span class="hi">email kamu sendiri</span>. Login tetap pakai email pribadi, akun lebih aman & bisa dipakai di banyak perangkat.</li>
+    </ul>
+
+    <div class="section-title">Ketentuan Umum</div>
+    <ul>
+      <li>Aktivasi <b>manual</b> oleh admin, estimasi <b>1×24 jam</b> setelah pembayaran dikonfirmasi.</li>
+      <li>Wajib kirim <b>bukti transfer</b> ke WhatsApp admin.</li>
+      <li>Tidak ada <b>refund</b> setelah akun berhasil diaktivasi.</li>
+      <li>Jangan <b>logout</b> atau ganti akun setelah aktivasi (khusus Share Email).</li>
+      <li>Pastikan akun Alight Motion sudah <b>terdaftar</b> sebelum order.</li>
+      <li>Ada kendala? Hubungi Owner <b>LummXD</b>.</li>
+    </ul>
+
+    <button class="mbtn" id="closeTc">Mengerti</button>
+  </div>
+</div>
+
+<!-- Follow Modal -->
+<div class="follow-modal" id="followModal">
+  <div class="follow-card">
+    <div class="follow-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 11l18-5v12L3 14v-3z"/>
+        <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+      </svg>
+    </div>
+    <h3>Follow Saluran LummXD</h3>
+    <p class="desc">Dapetin info update produk terbaru langsung dari owner!</p>
+
+    <div class="follow-benefits">
+      <div class="item"><span class="chk">✓</span> Update & info terbaru</div>
+      <div class="item"><span class="chk">✓</span> Produk baru lebih dulu</div>
+      <div class="item"><span class="chk">✓</span> Harga & stok terkini</div>
+    </div>
+
+    <a href="https://whatsapp.com/channel/0029Vb95Lvu8V0tmMQ3vQ41c" id="btnFollow" class="btn-follow" target="_blank">
+      <svg class="wa-ic" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+      </svg>
+      Follow Sekarang
+    </a>
+    <button class="btn-skip" id="btnSkip">Nanti aja</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">OK</div>
+
+<script>
+  const CONFIG = {
+    produk: 'Alight Motion Premium',
+    durasi: '1 Tahun',
+    nomorWA: '6283130971335'
+  };
+
+  const PAKET = {
+    share:   { label: 'Share Email',  harga: 'Rp 1.800', desc: 'Email dari admin' },
+    sendiri: { label: 'Email Sendiri', harga: 'Rp 2.500', desc: 'Email kamu sendiri' }
+  };
+
+  let paketTerpilih = 'share';
+
+  const $ = id => document.getElementById(id);
+  const agree = $('agree');
+  const btnOrder = $('btnOrder');
+  const step1 = $('step1');
+  const step2 = $('step2');
+  const btnBack = $('btnBack');
+  const btnWa = $('btnWa');
+  const tcModal = $('tcModal');
+  const openTc = $('openTc');
+  const closeTc = $('closeTc');
+  const toast = $('toast');
+  const totalHarga = $('totalHarga');
+  const payAmount = $('payAmount');
+  const payVariant = $('payVariant');
+
+  // ===== REVEAL =====
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 40);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ===== PAGE SWITCH =====
+  function switchPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    $(pageId).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => {
+      n.classList.toggle('active', n.dataset.page === pageId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelectorAll('#' + pageId + ' .reveal').forEach((el, i) => {
+      el.classList.remove('in');
+      setTimeout(() => el.classList.add('in'), i * 50);
+    });
+  }
+
+  document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => switchPage(btn.dataset.page));
+  });
+
+  // ===== DRAWER =====
+  const drawer = $('drawer');
+  const drawerOverlay = $('drawerOverlay');
+  const menuBtn = $('menuBtn');
+  const drawerClose = $('drawerClose');
+
+  function openDrawer() {
+    drawer.classList.add('show');
+    drawerOverlay.classList.add('show');
+  }
+  function closeDrawer() {
+    drawer.classList.remove('show');
+    drawerOverlay.classList.remove('show');
+  }
+  menuBtn.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+
+  document.querySelectorAll('.drawer-item[data-page]').forEach(item => {
+    item.addEventListener('click', () => {
+      switchPage(item.dataset.page);
+      closeDrawer();
+    });
+  });
+
+  // ===== FAQ ACCORDION =====
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ===== FOLLOW MODAL =====
+  const followModal = $('followModal');
+  const btnFollow = $('btnFollow');
+  const btnSkip = $('btnSkip');
+  setTimeout(() => followModal.classList.add('show'), 700);
+  function closeFollowModal() { followModal.classList.remove('show'); }
+  btnFollow.addEventListener('click', () => setTimeout(closeFollowModal, 300));
+  btnSkip.addEventListener('click', closeFollowModal);
+  followModal.addEventListener('click', e => {
+    if (e.target === followModal) closeFollowModal();
+  });
+
+  // ===== PILIH PAKET =====
+  document.querySelectorAll('.variant').forEach(v => {
+    v.addEventListener('click', () => {
+      v.querySelector('input[type="radio"]').checked = true;
+      document.querySelectorAll('.variant').forEach(x => x.classList.remove('selected'));
+      v.classList.add('selected');
+      paketTerpilih = v.querySelector('input').value;
+      const d = PAKET[paketTerpilih];
+      totalHarga.textContent = d.harga;
+      payAmount.textContent = d.harga;
+      payVariant.textContent = d.label;
+    });
+  });
+
+  // ===== ORDER =====
+  agree.addEventListener('change', () => {
+    btnOrder.disabled = !agree.checked;
+  });
+
+  btnOrder.addEventListener('click', () => {
+    const d = PAKET[paketTerpilih];
+    step1.classList.add('hide');
+    step2.classList.remove('hide');
+
+    document.querySelectorAll('#step2 .reveal').forEach((el, i) => {
+      el.classList.remove('in');
+      setTimeout(() => el.classList.add('in'), i * 60);
+    });
+
+    const msg =
+'Halo Owner LummXD, saya sudah order:\n\n' +
+'Produk : ' + CONFIG.produk + '\n' +
+'Durasi : ' + CONFIG.durasi + '\n' +
+'Paket  : ' + d.label + ' (' + d.desc + ')\n' +
+'Total  : ' + d.harga + '\n' +
+'Metode : QRIS\n\n' +
+'Ini bukti pembayarannya ya, mohon diproses. Terima kasih.';
+
+    btnWa.href = 'https://wa.me/' + CONFIG.nomorWA + '?text=' + encodeURIComponent(msg);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  btnBack.addEventListener('click', () => {
+    step2.classList.add('hide');
+    step1.classList.remove('hide');
+  });
+
+  // ===== MODAL T&C =====
+  openTc.addEventListener('click', e => {
+    e.preventDefault();
+    tcModal.classList.add('show');
+  });
+  closeTc.addEventListener('click', () => tcModal.classList.remove('show'));
+  tcModal.addEventListener('click', e => {
+    if (e.target === tcModal) tcModal.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
